@@ -15,9 +15,10 @@ class UserProfileManager(BaseUserManager):
         user = self.model(email=email, name=name)
 
         user.set_password(password)
-        user.save(using=self_db)
+        user.save(using=self._db)
+        return user
 
-    def create_superusr(self, email, name, password):
+    def create_superuser(self, email, name, password):
         """Create super user"""
         user = self.create_user(email, name, password)
 
